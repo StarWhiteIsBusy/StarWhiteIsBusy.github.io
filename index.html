@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="StarWhite — Windows Surroundings · Linux / Wayland development  · VibeCoding  · Robotic Engineering  · 主题引擎开发 · Nyxuri 管理参与者">
+  <meta name="color-scheme" content="dark light">
+  <meta property="og:title" content="StarWhite — System Architecture &amp; Open Source Developer">
+  <meta property="og:description" content="Windows Surroundings · Linux / Wayland development  · VibeCoding  · Robotic Engineering  · 桌面美化与主题引擎开发">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://github.com/StarWhiteIsBusy.png">
+  <title>StarWhite — System Architecture &amp; Open Source Developer</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90' fill='%23ff2a44'>✦</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- ========== 粒子画布 (主白星光 · 绯红微星点缀) ========== -->
+  <canvas id="particles" aria-hidden="true"></canvas>
+
+  <!-- ========== 顶部导航栏 (全适配手机触控) ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-star">✦</span>
+        <span>StarWhite</span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about" class="nav-link">关于</a></li>
+        <li><a href="#projects" class="nav-link">作品</a></li>
+        <li><a href="#notes" class="nav-link">笔记</a></li>
+        <li><a href="#nyxuri" class="nav-link">Nyxuri</a></li>
+        <li><a href="#contact" class="nav-link">联系</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="切换深色/浅色模式">
+          <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="打开导航菜单" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== Hero 区域 ========== -->
+  <header class="hero" id="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="hero-orb orb-1"></div>
+      <div class="hero-orb orb-2"></div>
+      <div class="hero-orb orb-3"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        System Architecture &amp; Open Source Developer
+      </div>
+      <h1 class="hero-title">
+        <span class="hero-greeting">你好，我是</span>
+        <span class="hero-name">StarWhite<span class="accent-dot">.</span></span>
+      </h1>
+      <p class="hero-subtitle">Windows Surroundings · Linux / Wayland development  · VibeCoding  · Robotic Engineering</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">
+          <span>浏览作品</span>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="https://github.com/StarWhiteIsBusy" target="_blank" rel="noopener" class="btn btn-ghost">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </div>
+    <div class="scroll-hint" aria-hidden="true">
+      <div class="scroll-mouse"><div class="scroll-dot"></div></div>
+      <span>向下滑动</span>
+    </div>
+  </header>
+
+  <!-- ========== 关于我 (系统架构特长与社区贡献) ========== -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag"><span class="tag-dot"></span>About Me</span>
+        <h2 class="section-title">关于我</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-bio-card reveal-left">
+          <div class="about-top">
+            <div class="avatar-wrap">
+              <img src="https://github.com/StarWhiteIsBusy.png" alt="StarWhite 头像" width="80" height="80" loading="lazy" class="avatar">
+              <div class="avatar-ring"></div>
+            </div>
+            <div>
+              <h3 class="about-name">StarWhite</h3>
+              <span class="about-handle">@StarWhiteIsBusy</span>
+            </div>
+          </div>
+          <p>
+            喜欢<strong>操作系统架构研究，桌面美化</strong>。比较擅长 <strong>Windows ，WinPE and WTG的深度定制</strong>、<strong>Linux 系统与 Wayland 生态构建</strong>、 以及 玩过<strong> 超级多的二游</strong>，FPS，部分3A<strong>（地平线6是神）</strong>和Galgame<strong>(特莉波卡最可爱了^_^)。</strong>
+          </p>
+          <p>
+            同时，作为 <strong>Nyxuri</strong> 项目的管理参与者，我正在打磨一套基于<strong>Material You</strong>的<strong>Linux shell美化软件生态</strong>（包括但不限于标准文件格式，跨发行版，桌面环境兼容性），而我所在的<strong>华强南工作室</strong>也在所居住的城市提供<strong>装机，系统维护</strong>服务
+          </p>
+        </div>
+        <div class="about-stats">
+          <div class="stat-card reveal-right stagger-1">
+            <span class="stat-icon-wrap">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>
+            </span>
+            <span class="stat-label">Windows向系统开发</span>
+            <span class="stat-value">客制化windows<br>
+            重制化PE，WTG</span>
+          </div>
+          <div class="stat-card reveal-right stagger-2">
+            <span class="stat-icon-wrap">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+            </span>
+            <span class="stat-label">开发平台</span>
+            <span class="stat-value">Windows 11 workstation pro<br> Cachyos+Wayland（nyxuri）</span>
+          </div>
+          <div class="stat-card reveal-right stagger-3">
+            <span class="stat-icon-wrap">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="6" rx="1"/><rect x="4" y="8" width="16" height="14" rx="2"/><circle cx="12" cy="15" r="2"/></svg>
+            </span>
+            <span class="stat-label">多数项目的代码</span>
+            <span class="stat-value">kotlin / rust / python / c++ / 前端三件套</span>
+          </div>
+          <div class="stat-card reveal-right stagger-4">
+            <span class="stat-icon-wrap">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </span>
+            <span class="stat-label">开源项目</span>
+            <span class="stat-value">Nyxuri / Nyx系列套件 / StarWhiteNote</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 个人作品 ========== -->
+  <section class="section section-alt" id="projects">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag"><span class="tag-dot"></span>Projects</span>
+        <h2 class="section-title">个人作品</h2>
+        <p class="section-desc">精心打造的开源项目，为 Linux 与桌面系统带来极致的视觉与架构体验</p>
+      </div>
+
+      <!-- ★ 代表作 -->
+      <div class="featured-card reveal">
+        <div class="featured-body">
+          <div class="featured-info">
+            <div class="featured-badge">
+              <span class="badge-star">✦</span> 代表作品
+            </div>
+            <h3>Round Simple Fcitx5 Skin</h3>
+            <p>一款极简主义、圆角设计的 Fcitx5 输入法皮肤。支持 Material You 风格的动态配色与圆角极简美学，让输入法自然融入现代化桌面环境。</p>
+            <ul class="check-list">
+              <li><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>动态配色自适应 — 深度契合 Material You 调色板</li>
+              <li><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>完整矢量 SVG 图标支持 · 高 DPI 极致清晰缩放</li>
+              <li><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>可自定义横向 / 纵向候选词布局与圆角曲率</li>
+              <li><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>提供极简黑白经典款与自定义颜色配置</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag">Fcitx5</span>
+              <span class="tag">Material You</span>
+              <span class="tag">Wayland</span>
+              <span class="tag">SVG</span>
+              <span class="tag">圆角美化</span>
+            </div>
+            <a href="https://github.com/StarWhiteIsBusy/Round-Simple-Fcitx5-Skin" target="_blank" rel="noopener" class="btn btn-primary btn-featured">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              <span>查看源码</span>
+            </a>
+          </div>
+          <div class="featured-visual">
+            <div class="code-window">
+              <div class="code-titlebar">
+                <span class="dot dot-accent"></span>
+                <span class="dot dot-muted"></span>
+                <span class="dot dot-white"></span>
+                <span class="code-filename">theme.conf</span>
+              </div>
+              <pre class="code-body"><code><span class="c-comment"># Round Simple Fcitx5 Skin</span>
+<span class="c-comment"># Minimal Monochrome with Red Spark</span>
+
+<span class="c-section">[InputPanel]</span>
+<span class="c-key">NormalColor</span>=<span class="c-color">#FFFFFF</span>
+<span class="c-key">HighlightColor</span>=<span class="c-color">#E8E8EE</span>
+<span class="c-key">Spacing</span>=<span class="c-num">8</span>
+
+<span class="c-section">[InputPanel/Background]</span>
+<span class="c-key">Color</span>=<span class="c-color">#08080B</span>
+<span class="c-key">BorderColor</span>=<span class="c-color">#22222C</span>
+<span class="c-key">BorderWidth</span>=<span class="c-num">1</span>
+
+<span class="c-section">[InputPanel/Highlight]</span>
+<span class="c-key">Color</span>=<span class="c-color">#181820</span></code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 更多项目网格 -->
+      <div class="projects-grid">
+        <!-- 1. Herta-Skin-For-Fcitx5 -->
+        <div class="project-card reveal-left stagger-1">
+          <div class="card-icon-wrap">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+          </div>
+          <h3>Herta-Skin-For-Fcitx5</h3>
+          <p>基于 Fcitx5 的崩坏：星穹铁道“黑塔”主题输入法皮肤，提供丰富的候选框布局与圆角设计风格选择，兼具美观与输入实用性。</p>
+          <div class="tag-row">
+            <span class="tag">Fcitx5</span>
+            <span class="tag">黑塔</span>
+            <span class="tag">皮肤美化</span>
+            <span class="tag">二次元</span>
+          </div>
+          <a href="https://github.com/StarWhiteIsBusy/Herta-Skin-For-Fcitx5" target="_blank" rel="noopener" class="card-link">
+            查看仓库 <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
+
+        <!-- 2. nyx-cursor -->
+        <div class="project-card reveal stagger-2">
+          <div class="card-icon-wrap">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m3 3 7 18 3-7 7-3L3 3z"/>
+              <path d="m13 13 6 6"/>
+            </svg>
+          </div>
+          <h3>nyx-cursor</h3>
+          <p>基于 Rust 编写的原生 Windows 光标/鼠标指针主题导入与配置管理工具，为 CachyOS 与 Windows 带来一致、现代的桌面指针体验。</p>
+          <div class="tag-row">
+            <span class="tag">Rust</span>
+            <span class="tag">Windows</span>
+            <span class="tag">CachyOS</span>
+            <span class="tag">Cursor</span>
+          </div>
+          <a href="https://github.com/StarWhiteIsBusy/nyx-cursor" target="_blank" rel="noopener" class="card-link">
+            查看仓库 <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
+
+        <!-- 3. nyx-scanner -->
+        <div class="project-card reveal-right stagger-3">
+          <div class="card-icon-wrap">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7"/>
+              <rect x="14" y="3" width="7" height="7"/>
+              <rect x="14" y="14" width="7" height="7"/>
+              <rect x="3" y="14" width="7" height="7"/>
+            </svg>
+          </div>
+          <h3>nyx-scanner</h3>
+          <p>跨场景二维码扫描识别工具。支持实时调用摄像头扫码、本地图片文件解析以及屏幕即时区域截图识别，轻量且高效。</p>
+          <div class="tag-row">
+            <span class="tag">Shell</span>
+            <span class="tag">二维码识别</span>
+            <span class="tag">截图扫码</span>
+            <span class="tag">摄像头</span>
+          </div>
+          <a href="https://github.com/StarWhiteIsBusy/nyx-scanner" target="_blank" rel="noopener" class="card-link">
+            查看仓库 <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
+
+        <!-- 4. Fast-Path -->
+        <div class="project-card reveal-left stagger-1">
+          <div class="card-icon-wrap">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="4 17 10 11 4 5"/>
+              <line x1="12" y1="19" x2="20" y2="19"/>
+            </svg>
+          </div>
+          <h3>Fast-Path</h3>
+          <p>深度优化终端工作流的智能路径跳转工具，自动与当前聚焦的 GUI 文件管理器窗口实时联动适配，大幅提升目录切换效率。</p>
+          <div class="tag-row">
+            <span class="tag">Shell</span>
+            <span class="tag">终端优化</span>
+            <span class="tag">GUI 联动</span>
+            <span class="tag">工作流</span>
+          </div>
+          <a href="https://github.com/StarWhiteIsBusy/Fast-Path" target="_blank" rel="noopener" class="card-link">
+            查看仓库 <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
+
+        <!-- 5. 更多项目 -->
+        <div class="project-card project-card--dashed reveal stagger-2">
+          <div class="card-icon-wrap">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"/>
+              <line x1="5" y1="12" x2="19" y2="12"/>
+            </svg>
+          </div>
+          <h3>更多开源项目</h3>
+          <p>前往 GitHub 个人主页，探索更多正在开发与维护的开源工具、桌面系统配置及代码仓库。</p>
+          <a href="https://github.com/StarWhiteIsBusy?tab=repositories" target="_blank" rel="noopener" class="card-link">
+            访问全部仓库 <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 个人笔记站 (StarWhiteNote) ========== -->
+  <section class="section" id="notes">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag"><span class="tag-dot"></span>Notes</span>
+        <h2 class="section-title">个人笔记站</h2>
+        <p class="section-desc">专注个人学习记录与知识体系思维导图</p>
+      </div>
+
+      <div class="note-box reveal">
+        <div class="note-box-header">
+          <div class="note-box-title-group">
+            <div class="note-box-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="note-box-title">StarWhiteNote</h3>
+              <span class="note-box-url">starwhitenote.xyz</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="note-box-desc">
+          我的个人学习记录站点。用于系统性归档平时的<strong>电子学习笔记</strong>、<strong>核心知识梳理</strong>与<strong>思维导图</strong>，方便随时查阅与长期复习。
+        </p>
+
+        <div class="note-box-actions">
+          <a href="https://starwhitenote.xyz" target="_blank" rel="noopener" class="btn btn-primary">
+            <span>访问笔记站 (starwhitenote.xyz)</span>
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+          <a href="https://github.com/StarWhiteIsBusy/StarWhiteNote" target="_blank" rel="noopener" class="btn btn-ghost">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            <span>GitHub 源码</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Nyxuri ========== -->
+  <section class="section section-alt" id="nyxuri">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag"><span class="tag-dot"></span>Community Project</span>
+        <h2 class="section-title">Nyxuri</h2>
+        <p class="section-desc">基于插件的 Arch Linux 桌面配置管理系统</p>
+      </div>
+
+      <div class="nyxuri-card reveal">
+        <div class="nyxuri-role">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          管理参与者
+        </div>
+        <h3 class="nyxuri-title">打造极致的 Arch Linux 桌面体验</h3>
+        <p class="nyxuri-desc">Nyxuri（原名 NyxNiri）是由 <a href="https://github.com/ech678" target="_blank" rel="noopener">ech678</a> 创建的桌面配置框架。作为管理参与者，我帮助维护和优化这个为 Arch Linux 和 CachyOS 用户设计的一站式桌面美化方案。</p>
+
+        <div class="nyxuri-features">
+          <div class="nyx-feat">
+            <span class="nyx-feat-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+            </span>
+            <div>
+              <h4>Material You 动态配色</h4>
+              <p>从壁纸自动提取 Monet 配色方案，统一应用到整个桌面环境、GTK 主题、Kitty 终端和 Fcitx5</p>
+            </div>
+          </div>
+          <div class="nyx-feat">
+            <span class="nyx-feat-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+            </span>
+            <div>
+              <h4>多窗口管理器支持</h4>
+              <p>支持 Niri、MangoWM 等滚动式平铺 Wayland 合成器，内置快捷键桥接</p>
+            </div>
+          </div>
+          <div class="nyx-feat">
+            <span class="nyx-feat-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </span>
+            <div>
+              <h4>Orbit Launcher</h4>
+              <p>矢量径向启动器、壁纸选择器（静态 / 动态视频）、浮动终端暂存区</p>
+            </div>
+          </div>
+          <div class="nyx-feat">
+            <span class="nyx-feat-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            </span>
+            <div>
+              <h4>预设管理</h4>
+              <p>通过 CLI 命令无缝打包、保存和切换应用配置变体</p>
+            </div>
+          </div>
+        </div>
+
+        <a href="https://github.com/ech678/Nyxuri" target="_blank" rel="noopener" class="btn btn-primary btn-nyxuri">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          <span>访问 Nyxuri 仓库</span>
+        </a>
+      </div>
+
+      <!-- 贡献者 -->
+      <div class="contributors reveal">
+        <h3 class="contrib-title">核心贡献者</h3>
+        <div class="contrib-grid">
+          <a href="https://github.com/ech678" target="_blank" rel="noopener" class="contrib" title="ech678 — 创建者">
+            <img src="https://github.com/ech678.png" alt="ech678" width="48" height="48" loading="lazy"><span>ech678</span>
+          </a>
+          <a href="https://github.com/StarWhiteIsBusy" target="_blank" rel="noopener" class="contrib contrib--me" title="StarWhite — 管理参与者">
+            <img src="https://github.com/StarWhiteIsBusy.png" alt="StarWhite" width="48" height="48" loading="lazy"><span>StarWhite</span>
+          </a>
+          <a href="https://github.com/sijin-xb" target="_blank" rel="noopener" class="contrib" title="sijin-xb">
+            <img src="https://github.com/sijin-xb.png" alt="sijin-xb" width="48" height="48" loading="lazy"><span>sijin-xb</span>
+          </a>
+          <a href="https://github.com/ylh440104" target="_blank" rel="noopener" class="contrib" title="ylh440104">
+            <img src="https://github.com/ylh440104.png" alt="ylh440104" width="48" height="48" loading="lazy"><span>ylh440104</span>
+          </a>
+          <a href="https://github.com/Accel-White" target="_blank" rel="noopener" class="contrib" title="Accel-White">
+            <img src="https://github.com/Accel-White.png" alt="Accel-White" width="48" height="48" loading="lazy"><span>Accel-White</span>
+          </a>
+          <a href="https://github.com/freesky3" target="_blank" rel="noopener" class="contrib" title="freesky3">
+            <img src="https://github.com/freesky3.png" alt="freesky3" width="48" height="48" loading="lazy"><span>freesky3</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 联系方式 ========== -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag"><span class="tag-dot"></span>Contact</span>
+        <h2 class="section-title">联系方式</h2>
+        <p class="section-desc">欢迎交流操作系统架构精简、Linux / Wayland、开源桌面美化或技术合作</p>
+      </div>
+      <div class="contact-grid">
+        <!-- QQ 交流 -->
+        <div class="contact-card reveal-right stagger-1" data-copy="3240714433" role="button" tabindex="0" title="点击复制 QQ 号">
+          <div class="contact-icon-wrap">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+          </div>
+          <span class="contact-label">QQ 交流</span>
+          <span class="contact-val">3240714433</span>
+          <span class="contact-action">点击复制</span>
+        </div>
+
+        <!-- QQ 邮箱 -->
+        <a href="mailto:3240714433@qq.com" class="contact-card reveal-right stagger-2" data-copy="3240714433@qq.com" title="点击发送邮件或复制地址">
+          <div class="contact-icon-wrap">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+            </svg>
+          </div>
+          <span class="contact-label">QQ 邮箱</span>
+          <span class="contact-val">3240714433@qq.com</span>
+          <span class="contact-action">发送邮件 / 复制</span>
+        </a>
+
+        <!-- Gmail 邮箱 -->
+        <a href="mailto:leo.cui445@gmail.com" class="contact-card reveal-right stagger-3" data-copy="leo.cui445@gmail.com" title="点击发送邮件或复制地址">
+          <div class="contact-icon-wrap">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <span class="contact-label">Gmail 邮箱</span>
+          <span class="contact-val">leo.cui445@gmail.com</span>
+          <span class="contact-action">发送邮件 / 复制</span>
+        </a>
+
+        <!-- GitHub -->
+        <a href="https://github.com/StarWhiteIsBusy" target="_blank" rel="noopener" class="contact-card reveal-right stagger-4" title="访问 GitHub 个人主页">
+          <div class="contact-icon-wrap">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+          </div>
+          <span class="contact-label">GitHub 主页</span>
+          <span class="contact-val">@StarWhiteIsBusy</span>
+          <span class="contact-action">访问主页 →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Footer ========== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-logo"><span class="logo-star">✦</span> StarWhite</div>
+      <p>© 2024 – 2026 StarWhite · <a href="https://starwhitenote.xyz" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline;text-underline-offset:3px;">starwhitenote.xyz</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
