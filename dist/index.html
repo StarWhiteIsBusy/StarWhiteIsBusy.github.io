@@ -1271,7 +1271,7 @@ ul {
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 28px;
-  margin-bottom: 28px;
+  margin-bottom: 0;
   transition: border-color .25s ease, box-shadow .25s ease;
 }
 
@@ -1371,66 +1371,6 @@ ul {
   font-size: .8rem;
   color: var(--text-dim);
   line-height: 1.5;
-}
-
-/* Contributors */
-.contributors {
-  text-align: center;
-}
-
-.contrib-title {
-  font-size: .95rem;
-  font-weight: 700;
-  color: var(--text-dim);
-  margin-bottom: 18px;
-}
-
-.contrib-grid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-
-.contrib {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  transition: transform .2s ease;
-}
-
-.contrib:hover {
-  transform: translateY(-2px);
-}
-
-.contrib img {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 2px solid var(--border);
-  transition: border-color .2s ease;
-}
-
-.contrib:hover img {
-  border-color: #ffffff;
-}
-
-.contrib span {
-  font-size: .75rem;
-  color: var(--text-dim);
-}
-
-/* StarWhite 贡献者红光环微点缀 */
-.contrib--me img {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 2px var(--accent-border);
-}
-
-.contrib--me span {
-  color: var(--text);
-  font-weight: 700;
 }
 
 /* ============================================================
@@ -2026,31 +1966,6 @@ ul {
           <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
           <span>访问 Nyxuri 仓库</span>
         </a>
-      </div>
-
-      <!-- 贡献者 -->
-      <div class="contributors reveal">
-        <h3 class="contrib-title">核心贡献者</h3>
-        <div class="contrib-grid">
-          <a href="https://github.com/ech678" target="_blank" rel="noopener" class="contrib" title="ech678 — 创建者">
-            <img src="https://github.com/ech678.png" alt="ech678" width="48" height="48" loading="lazy"><span>ech678</span>
-          </a>
-          <a href="https://github.com/StarWhiteIsBusy" target="_blank" rel="noopener" class="contrib contrib--me" title="StarWhite — 管理参与者">
-            <img src="https://github.com/StarWhiteIsBusy.png" alt="StarWhite" width="48" height="48" loading="lazy"><span>StarWhite</span>
-          </a>
-          <a href="https://github.com/sijin-xb" target="_blank" rel="noopener" class="contrib" title="sijin-xb">
-            <img src="https://github.com/sijin-xb.png" alt="sijin-xb" width="48" height="48" loading="lazy"><span>sijin-xb</span>
-          </a>
-          <a href="https://github.com/ylh440104" target="_blank" rel="noopener" class="contrib" title="ylh440104">
-            <img src="https://github.com/ylh440104.png" alt="ylh440104" width="48" height="48" loading="lazy"><span>ylh440104</span>
-          </a>
-          <a href="https://github.com/Accel-White" target="_blank" rel="noopener" class="contrib" title="Accel-White">
-            <img src="https://github.com/Accel-White.png" alt="Accel-White" width="48" height="48" loading="lazy"><span>Accel-White</span>
-          </a>
-          <a href="https://github.com/freesky3" target="_blank" rel="noopener" class="contrib" title="freesky3">
-            <img src="https://github.com/freesky3.png" alt="freesky3" width="48" height="48" loading="lazy"><span>freesky3</span>
-          </a>
-        </div>
       </div>
     </div>
   </section>

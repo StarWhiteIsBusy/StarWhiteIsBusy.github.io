@@ -1254,7 +1254,7 @@ ul {
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 28px;
-  margin-bottom: 28px;
+  margin-bottom: 0;
   transition: border-color .25s ease, box-shadow .25s ease;
 }
 
@@ -1354,66 +1354,6 @@ ul {
   font-size: .8rem;
   color: var(--text-dim);
   line-height: 1.5;
-}
-
-/* Contributors */
-.contributors {
-  text-align: center;
-}
-
-.contrib-title {
-  font-size: .95rem;
-  font-weight: 700;
-  color: var(--text-dim);
-  margin-bottom: 18px;
-}
-
-.contrib-grid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-
-.contrib {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  transition: transform .2s ease;
-}
-
-.contrib:hover {
-  transform: translateY(-2px);
-}
-
-.contrib img {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 2px solid var(--border);
-  transition: border-color .2s ease;
-}
-
-.contrib:hover img {
-  border-color: #ffffff;
-}
-
-.contrib span {
-  font-size: .75rem;
-  color: var(--text-dim);
-}
-
-/* StarWhite 贡献者红光环微点缀 */
-.contrib--me img {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 2px var(--accent-border);
-}
-
-.contrib--me span {
-  color: var(--text);
-  font-weight: 700;
 }
 
 /* ============================================================
